@@ -4,25 +4,37 @@ export class App extends Component {
   state = {
     contacts: [],
     name: '',
+    number: '',
   };
 
   handleNameChange = e => {
     this.setState({
       name: e.target.value,
     });
-    console.log(this.state.name);
+    // console.log(this.state.name);
+  };
+
+  handleNumberChange = e => {
+    this.setState({
+      number: e.target.value,
+    });
+    // console.log(this.state.name);
   };
 
   handleSubmit = e => {
     e.preventDefault();
     this.setState(prevState => ({
-      contacts: [...prevState.contacts, { name: prevState.name }],
-      name: '', // Clear the input after submission
+      contacts: [
+        ...prevState.contacts,
+        { name: prevState.name, number: prevState.number },
+      ],
+      name: '',
+      number: '',
     }));
   };
 
   render() {
-    const { contacts, name } = this.state;
+    const { contacts, name, number } = this.state;
     return (
       <>
         <div>
@@ -40,6 +52,18 @@ export class App extends Component {
                 onChange={this.handleNameChange}
               />
             </label>
+            <label>
+              <p>Telephone</p>
+              <input
+                type="tel"
+                name="number"
+                pattern="\+?\d{1,4}?[\-.\s]?\(?\d{1,3}?\)?[\-.\s]?\d{1,4}[\-.\s]?\d{1,4}[\-.\s]?\d{1,9}"
+                title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
+                required
+                value={number}
+                onChange={this.handleNumberChange}
+              />
+            </label>
             <button type="submit">Submit</button>
           </form>
         </div>
@@ -47,7 +71,10 @@ export class App extends Component {
         <div>
           <ul>
             {contacts.map((contact, index) => (
-              <li key={index}>{contact.name}</li>
+              <li key={index}>
+                <p>{contact.name}</p>
+                <p>{contact.number}</p>
+              </li>
             ))}
           </ul>
         </div>
