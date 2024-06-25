@@ -2,6 +2,7 @@ import { Component } from 'react';
 import { ContactForm } from './ContactForm/ContactForm';
 import { Filter } from './Filter/Filter';
 import { ContactList } from './ContactList/ContactList';
+import css from './App.module.css';
 
 export class App extends Component {
   state = {
@@ -52,9 +53,10 @@ export class App extends Component {
 
     return (
       <>
-        <h1>Phonebook</h1>
-        <ContactForm addNewContact={this.addNewContact} contacts={contacts} />
-
+        <div className={css.container}>
+          <h1>Phonebook</h1>
+          <ContactForm addNewContact={this.addNewContact} contacts={contacts} />
+        </div>
         <div>
           <h2>Contacts</h2>
           <Filter filter={filter} setFilter={this.setFilter} />
