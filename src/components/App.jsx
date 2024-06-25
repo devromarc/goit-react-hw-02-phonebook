@@ -57,7 +57,7 @@ export class App extends Component {
           <h1>Phonebook</h1>
           <ContactForm addNewContact={this.addNewContact} contacts={contacts} />
         </div>
-        <div>
+        <div className={css.containerContacts}>
           <h2>Contacts</h2>
           <Filter filter={filter} setFilter={this.setFilter} />
           <ContactList
