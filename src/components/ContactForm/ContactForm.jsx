@@ -5,7 +5,7 @@ import css from './ContactForm.module.css';
 
 export class ContactForm extends Component {
   static propTypes = {
-    addContact: PropTypes.func.isRequired,
+    addNewContact: PropTypes.func.isRequired,
     contacts: PropTypes.arrayOf(
       PropTypes.shape({
         id: PropTypes.string.isRequired,
